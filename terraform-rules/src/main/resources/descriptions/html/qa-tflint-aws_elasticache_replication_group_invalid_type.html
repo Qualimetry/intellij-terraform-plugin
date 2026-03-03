@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Invalid ElastiCache replication group node type</title></head>
+<body>
+<p>The node_type must be a valid ElastiCache replication group node type.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_elasticache_replication_group&quot; &quot;a&quot; { replication_group_id = &quot;x&quot;; node_type = &quot;invalid&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_elasticache_replication_group&quot; &quot;a&quot; { replication_group_id = &quot;x&quot;; node_type = &quot;cache.t3.micro&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elasticache_replication_group_invalid_type.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elasticache_replication_group_invalid_type.md</a></p>
+</body>
+</html>

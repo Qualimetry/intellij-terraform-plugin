@@ -1,0 +1,12 @@
+Created-By: Gradle 8.12
+Version: 2.2.2
+Build-JVM: 17.0.3 (Eclipse Adoptium 17.0.3+7)
+Build-OS: Windows 11 10.0 amd64
+Build-Plugin: IntelliJ Platform Gradle Plugin
+Build-Plugin-Version: 2.2.1
+Platform-Type: IC
+Platform-Version: 2024.3
+Platform-Build: 243.21565.193
+Kotlin-Available: false
+Kotlin-Stdlib-Bundled: false
+Kotlin-Version: null

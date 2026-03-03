@@ -1,0 +1,28 @@
+<idea-plugin>
+  <idea-version since-build="243" />
+  <version>2.2.2</version>
+  <id>com.qualimetry.terraform</id>
+  <name>Qualimetry Terraform Analyzer</name>
+  <vendor url="https://qualimetry.com">Qualimetry</vendor>
+  <description><![CDATA[<p>Static analysis of Terraform (HCL) files (<code>.tf</code>)
+in IntelliJ IDEA and other JetBrains IDEs. Also runs in JetBrains Qodana.</p>
+<p>Powered by tflint, Trivy, and Checkov with the Qualimetry rule registry.</p>
+<ul>
+  <li>400+ rules covering tflint, Trivy, and Checkov (AWS, Azure, GCP)</li>
+  <li>Real-time analysis as you edit</li>
+  <li>Works in IntelliJ IDEA, Rider, and JetBrains Qodana</li>
+</ul>]]></description>
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <localInspection groupName="Qualimetry Terraform" displayName="Qualimetry Terraform Analysis" shortName="QualimetryTerraformInspection" enabledByDefault="true" level="WARNING" implementationClass="com.qualimetry.intellij.terraform.TerraformInspection" />
+    <applicationConfigurable parentId="tools" instance="com.qualimetry.intellij.terraform.TerraformAnalyzerConfigurable" id="com.qualimetry.terraform.settings" displayName="Qualimetry Terraform Analyzer" />
+    <applicationService serviceImplementation="com.qualimetry.intellij.terraform.TerraformAnalyzerSettings" />
+    <notificationGroup id="Qualimetry Terraform" displayType="BALLOON" />
+  </extensions>
+  <actions>
+    <group id="Qualimetry.Terraform.Tools" text="Qualimetry Terraform" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="last" />
+      <action id="Qualimetry.Terraform.ImportFromSonarQube" class="com.qualimetry.intellij.terraform.ImportFromSonarQubeAction" text="Import Rules from SonarQube" description="Import active Terraform rules from a SonarQube quality profile" />
+    </group>
+  </actions>
+</idea-plugin>

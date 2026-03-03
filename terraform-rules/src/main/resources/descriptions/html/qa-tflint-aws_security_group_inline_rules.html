@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Security group inline rules</title></head>
+<body>
+<p>Prefer separate aws_security_group_rule resources over inline ingress/egress blocks for better management.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_security_group&quot; &quot;a&quot; { name = &quot;x&quot;; ingress { from_port = 22; to_port = 22; protocol = &quot;tcp&quot;; cidr_blocks = [&quot;0.0.0.0/0&quot;] } }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_security_group&quot; &quot;a&quot; { name = &quot;x&quot; }
+resource &quot;aws_security_group_rule&quot; &quot;a&quot; { type = &quot;ingress&quot;; from_port = 22; to_port = 22; protocol = &quot;tcp&quot;; cidr_blocks = [&quot;0.0.0.0/0&quot;]; security_group_id = aws_security_group.a.id }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_security_group_inline_rules.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_security_group_inline_rules.md</a></p>
+</body>
+</html>

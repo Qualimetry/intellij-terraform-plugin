@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Terraform naming convention</title></head>
+<body>
+<p>Enforces a naming convention for Terraform identifiers (resources, variables, outputs, locals, modules, data sources). Default format is snake_case; can be configured per block type. Non-compliant names (e.g. camelCase) are reported so that style stays consistent and readable.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;myInstance&quot; {}</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;my_instance&quot; {}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_naming_convention.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_naming_convention.md</a></p>
+</body>
+</html>
