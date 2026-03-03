@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>S3 Access block should block public ACL</title></head>
+<body>
+<p>S3 buckets should have a public access block that blocks public ACLs. Use aws_s3_bucket_public_access_block with block_public_acls set to true so that public ACLs do not grant unintended access.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }
+resource &quot;aws_s3_bucket_public_access_block&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; block_public_acls = true; block_public_policy = true; ignore_public_acls = true; restrict_public_buckets = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0086">https://avd.aquasec.com/misconfig/aws-0086</a></p>
+</body>
+</html>

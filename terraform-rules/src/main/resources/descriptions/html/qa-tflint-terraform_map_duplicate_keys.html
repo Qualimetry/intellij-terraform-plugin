@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Duplicate map keys</title></head>
+<body>
+<p>Disallow duplicate keys in a map. Duplicate keys are overwritten by Terraform and usually indicate a mistake.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>locals {
+  m = { a = 1, a = 2 }
+}</pre>
+<h2>Compliant Solution</h2>
+<pre>locals {
+  m = { a = 1, b = 2 }
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_map_duplicate_keys.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_map_duplicate_keys.md</a></p>
+</body>
+</html>

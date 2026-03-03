@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Previous generation RDS instance type</title></head>
+<body>
+<p>Disallow previous-generation RDS instance classes; use current generation for performance and support.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_db_instance&quot; &quot;a&quot; { engine = &quot;postgres&quot;; instance_class = &quot;db.t1.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_db_instance&quot; &quot;a&quot; { engine = &quot;postgres&quot;; instance_class = &quot;db.t3.micro&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_db_instance_previous_type.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_db_instance_previous_type.md</a></p>
+</body>
+</html>

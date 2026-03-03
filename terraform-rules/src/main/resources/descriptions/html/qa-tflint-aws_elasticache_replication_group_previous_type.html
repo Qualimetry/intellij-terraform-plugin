@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Previous generation ElastiCache replication group type</title></head>
+<body>
+<p>Disallow previous-generation node types for replication groups.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_elasticache_replication_group&quot; &quot;a&quot; { replication_group_id = &quot;x&quot;; node_type = &quot;cache.t1.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_elasticache_replication_group&quot; &quot;a&quot; { replication_group_id = &quot;x&quot;; node_type = &quot;cache.t3.micro&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elasticache_replication_group_previous_type.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elasticache_replication_group_previous_type.md</a></p>
+</body>
+</html>

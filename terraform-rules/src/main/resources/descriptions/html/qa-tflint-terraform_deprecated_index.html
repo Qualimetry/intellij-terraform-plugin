@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Deprecated dot index syntax</title></head>
+<body>
+<p>Disallow legacy dot index syntax for list access. Use square brackets (e.g. `list[0]`, `list[*].a`) instead of `list.0` or `list.*.a`; dot syntax is no longer documented.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>output &quot;x&quot; { value = var.list.0 }
+output &quot;y&quot; { value = var.items.*.id }</pre>
+<h2>Compliant Solution</h2>
+<pre>output &quot;x&quot; { value = var.list[0] }
+output &quot;y&quot; { value = [for i in var.items : i.id] }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_deprecated_index.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_deprecated_index.md</a></p>
+</body>
+</html>
