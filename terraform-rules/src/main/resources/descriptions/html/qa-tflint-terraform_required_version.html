@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Terraform required_version should be specified</title></head>
+<body>
+<p>The terraform block should specify required_version (and optionally required_providers) so that the correct Terraform version is used. Without it, different users or CI may use different versions and get inconsistent behaviour or failures.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>terraform {}</pre>
+<h2>Compliant Solution</h2>
+<pre>terraform {
+  required_version = &quot;&gt;= 1.0&quot;
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_required_version.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_required_version.md</a></p>
+</body>
+</html>

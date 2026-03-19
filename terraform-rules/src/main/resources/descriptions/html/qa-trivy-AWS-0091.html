@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>S3 Access block should ignore public ACLs</title></head>
+<body>
+<p>S3 buckets should ignore public ACLs on buckets and objects. Use aws_s3_bucket_public_access_block with ignore_public_acls = true so that PUT calls with public ACLs are applied but the ACL is ignored.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket_public_access_block&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; block_public_acls = true }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket_public_access_block&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; block_public_acls = true; ignore_public_acls = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0091">https://avd.aquasec.com/misconfig/aws-0091</a></p>
+</body>
+</html>

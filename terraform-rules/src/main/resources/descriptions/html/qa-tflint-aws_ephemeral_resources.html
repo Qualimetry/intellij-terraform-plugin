@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ephemeral resources</title></head>
+<body>
+<p>Disallow configuration that uses ephemeral storage or instance store in a way that can cause data loss.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-x&quot;; ephemeral_block_device { device_name = &quot;/dev/sdb&quot; } }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-x&quot;; root_block_device { volume_size = 20 } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_ephemeral_resources.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_ephemeral_resources.md</a></p>
+</body>
+</html>

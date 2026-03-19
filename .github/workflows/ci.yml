@@ -1,0 +1,135 @@
+name: CI (IntelliJ Plugin)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build & Test (Java 17)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build terraform-rules
+        run: |
+          mvn install -N --batch-mode --no-transfer-progress
+          mvn clean install -pl terraform-rules --batch-mode --no-transfer-progress
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build IntelliJ plugin
+        working-directory: intellij-plugin
+        run: gradle buildPlugin
+
+      - name: Upload plugin ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: intellij-terraform-plugin-zip
+          path: intellij-plugin/build/distributions/*.zip
+          retention-days: 30
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'release:')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build terraform-rules
+        run: |
+          mvn install -N --batch-mode --no-transfer-progress
+          mvn clean install -pl terraform-rules --batch-mode --no-transfer-progress -DskipTests
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build IntelliJ plugin
+        working-directory: intellij-plugin
+        run: gradle buildPlugin
+
+      - name: Extract version
+        id: version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -pl terraform-rules)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Extract release notes from CHANGELOG
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if [ -f CHANGELOG.md ]; then
+            awk "/^## \[${VERSION}\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md > release-notes.md
+          fi
+          if [ ! -s release-notes.md ]; then
+            echo "Release ${{ steps.version.outputs.version }}" > release-notes.md
+            echo "" >> release-notes.md
+            echo "${{ github.event.head_commit.message }}" >> release-notes.md
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: v${{ steps.version.outputs.version }}
+          body_path: release-notes.md
+          files: |
+            intellij-plugin/build/distributions/*.zip
+          draft: false
+          prerelease: false
+
+  publish-marketplace:
+    name: Publish to JetBrains Marketplace
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build terraform-rules
+        run: |
+          mvn install -N --batch-mode --no-transfer-progress
+          mvn clean install -pl terraform-rules --batch-mode --no-transfer-progress -DskipTests
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Publish to JetBrains Marketplace
+        working-directory: intellij-plugin
+        run: gradle publishPlugin
+        env:
+          JETBRAINS_MARKETPLACE_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+          PLUGIN_SIGNING_CERTIFICATE_CHAIN: ${{ secrets.PLUGIN_SIGNING_CERTIFICATE_CHAIN }}
+          PLUGIN_SIGNING_KEY: ${{ secrets.PLUGIN_SIGNING_KEY }}
+          PLUGIN_SIGNING_KEY_PASSWORD: ${{ secrets.PLUGIN_SIGNING_KEY_PASSWORD }}

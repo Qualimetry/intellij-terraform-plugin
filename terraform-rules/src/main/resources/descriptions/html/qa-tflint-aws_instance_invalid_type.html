@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Invalid AWS instance type</title></head>
+<body>
+<p>The instance_type attribute of aws_instance must be a valid AWS EC2 instance type. Invalid or deprecated types cause apply failures or runtime issues. See the AWS documentation for current instance types.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;invalid&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_instance_invalid_type.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_instance_invalid_type.md</a></p>
+</body>
+</html>

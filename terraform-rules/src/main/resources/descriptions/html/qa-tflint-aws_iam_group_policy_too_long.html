@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM group policy too long</title></head>
+<body>
+<p>Inline IAM group policies have size limits; policy document should not exceed the allowed size.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_iam_group_policy&quot; &quot;a&quot; { group = &quot;x&quot;; policy = jsonencode({ Version = &quot;2012-10-17&quot;, Statement = [for i in range(100) : { Effect = &quot;Allow&quot;, Action = &quot;*&quot;, Resource = &quot;*&quot; }] }) }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_iam_policy&quot; &quot;a&quot; { policy = jsonencode({ Version = &quot;2012-10-17&quot;, Statement = [{ Effect = &quot;Allow&quot;, Action = &quot;s3:GetObject&quot;, Resource = &quot;*&quot; }] }) }
+resource &quot;aws_iam_group_policy_attachment&quot; &quot;a&quot; { group = &quot;x&quot;; policy_arn = aws_iam_policy.a.arn }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_group_policy_too_long.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_group_policy_too_long.md</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensure Azure linux scale set does not use basic authentication(Use SSH Key Instead)</title></head>
+<body>
+<p>Ensure Azure linux scale set does not use basic authentication(Use SSH Key Instead).</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;azurerm_network_security_rule&quot; &quot;a&quot; { name = &quot;rdp&quot;; priority = 100; direction = &quot;Inbound&quot;; access = &quot;Allow&quot;; protocol = &quot;Tcp&quot;; source_address_prefix = &quot;*&quot;; destination_port_range = &quot;3389&quot;; resource_group_name = &quot;rg&quot;; network_security_group_name = &quot;nsg&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;azurerm_network_security_rule&quot; &quot;a&quot; { name = &quot;rdp&quot;; priority = 100; direction = &quot;Inbound&quot;; access = &quot;Deny&quot;; protocol = &quot;Tcp&quot;; source_address_prefix = &quot;*&quot;; destination_port_range = &quot;3389&quot;; resource_group_name = &quot;rg&quot;; network_security_group_name = &quot;nsg&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>
