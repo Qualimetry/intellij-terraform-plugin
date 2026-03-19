@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM role policy GovCloud-friendly ARNs</title></head>
+<body>
+<p>IAM role inline policies should use GovCloud-friendly ARN formats when applicable.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_iam_role_policy&quot; &quot;a&quot; { role = &quot;x&quot;; policy = jsonencode({ Statement = [{ Resource = &quot;arn:aws:s3:::*&quot; }] }) }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_iam_role_policy&quot; &quot;a&quot; { role = &quot;x&quot;; policy = jsonencode({ Statement = [{ Resource = &quot;arn:aws-us-gov:s3:::*&quot; }] }) }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_role_policy_gov_friendly_arns.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_role_policy_gov_friendly_arns.md</a></p>
+</body>
+</html>

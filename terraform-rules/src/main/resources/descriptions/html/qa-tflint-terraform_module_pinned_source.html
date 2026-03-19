@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Module source should be pinned</title></head>
+<body>
+<p>Module source attributes should be pinned to a specific version (e.g. ref=tag or commit SHA) rather than a floating branch. Unpinned sources can cause unexpected changes when the remote is updated and make builds non-reproducible.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>module &quot;m&quot; { source = &quot;git::https://github.com/org/repo.git?ref=main&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>module &quot;m&quot; { source = &quot;git::https://github.com/org/repo.git?ref=v1.0.0&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_pinned_source.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_pinned_source.md</a></p>
+</body>
+</html>

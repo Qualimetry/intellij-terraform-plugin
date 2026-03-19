@@ -1,0 +1,14 @@
+{
+  "issues": [
+    {
+      "rule": {"name": "terraform_naming_convention"},
+      "message": "resource name should match the naming convention",
+      "range": {"filename": "main.tf", "start": {"line": 3}}
+    },
+    {
+      "rule": {"name": "terraform_module_pinned_source"},
+      "message": "module source should be pinned",
+      "range": {"filename": "modules/foo/main.tf", "start": {"line": 1}}
+    }
+  ]
+}

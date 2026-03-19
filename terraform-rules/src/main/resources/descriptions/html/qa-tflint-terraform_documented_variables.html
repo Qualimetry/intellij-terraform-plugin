@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Variables should have description</title></head>
+<body>
+<p>Disallow `variable` declarations without description. Descriptions clarify purpose and are useful when combined with terraform-docs.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>variable &quot;name&quot; {}</pre>
+<h2>Compliant Solution</h2>
+<pre>variable &quot;name&quot; {
+  description = &quot;Resource name&quot;
+  type        = string
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_documented_variables.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_documented_variables.md</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensure EBS default encryption is enabled</title></head>
+<body>
+<p>Ensure EBS default encryption is enabled.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_ebs_volume&quot; &quot;a&quot; { size = 10; availability_zone = &quot;us-east-1a&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_ebs_volume&quot; &quot;a&quot; { size = 10; availability_zone = &quot;us-east-1a&quot;; encrypted = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>

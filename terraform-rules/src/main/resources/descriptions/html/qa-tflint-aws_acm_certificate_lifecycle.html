@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>ACM certificate lifecycle</title></head>
+<body>
+<p>Disallow invalid or deprecated ACM certificate lifecycle configuration.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_acm_certificate&quot; &quot;a&quot; { lifecycle { create_before_destroy = false } }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_acm_certificate&quot; &quot;a&quot; { lifecycle { create_before_destroy = true } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_acm_certificate_lifecycle.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_acm_certificate_lifecycle.md</a></p>
+</body>
+</html>

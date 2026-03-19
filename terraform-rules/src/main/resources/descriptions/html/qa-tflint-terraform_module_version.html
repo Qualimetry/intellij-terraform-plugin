@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Module version should be specified</title></head>
+<body>
+<p>Ensure modules from the Terraform Registry specify a `version`. Unpinned modules can pull breaking changes; constrain to a major version or exact version as needed.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>module &quot;vpc&quot; { source = &quot;terraform-aws-modules/vpc/aws&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>module &quot;vpc&quot; {
+  source  = &quot;terraform-aws-modules/vpc/aws&quot;
+  version = &quot;~&gt; 5.0&quot;
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_version.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_version.md</a></p>
+</body>
+</html>
