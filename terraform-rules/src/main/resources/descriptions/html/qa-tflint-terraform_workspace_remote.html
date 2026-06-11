@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>terraform.workspace with remote backend</title></head>
+<body>
+<p>`terraform.workspace` should not be used with a remote backend when remote execution is enabled; Terraform Cloud uses the default workspace during remote runs. Use a variable instead.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { tags = { env = terraform.workspace } }</pre>
+<h2>Compliant Solution</h2>
+<pre>variable &quot;env&quot; {}
+resource &quot;aws_instance&quot; &quot;a&quot; { tags = { env = var.env } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_workspace_remote.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_workspace_remote.md</a></p>
+</body>
+</html>

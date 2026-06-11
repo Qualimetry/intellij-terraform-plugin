@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Security group rule invalid protocol</title></head>
+<body>
+<p>Protocol must be valid for the security group rule.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_security_group_rule&quot; &quot;a&quot; { type = &quot;ingress&quot;; protocol = &quot;bad&quot;; security_group_id = &quot;sg-123&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_security_group_rule&quot; &quot;a&quot; { type = &quot;ingress&quot;; from_port = 0; to_port = 0; protocol = &quot;icmp&quot;; security_group_id = &quot;sg-123&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_security_group_rule_invalid_protocol.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_security_group_rule_invalid_protocol.md</a></p>
+</body>
+</html>

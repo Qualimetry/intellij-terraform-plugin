@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensure web app is using the latest version of TLS encryption</title></head>
+<body>
+<p>Ensure web app is using the latest version of TLS encryption.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;azurerm_managed_disk&quot; &quot;a&quot; { name = &quot;disk&quot;; location = &quot;East US&quot;; resource_group_name = &quot;rg&quot;; storage_account_type = &quot;Standard_LRS&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;azurerm_managed_disk&quot; &quot;a&quot; { name = &quot;disk&quot;; location = &quot;East US&quot;; resource_group_name = &quot;rg&quot;; storage_account_type = &quot;Standard_LRS&quot;; encryption_enabled = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>
