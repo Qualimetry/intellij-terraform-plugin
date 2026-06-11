@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Enforce HTTP Token IMDS</title></head>
+<body>
+<p>aws_instance should activate session tokens for Instance Metadata Service (IMDS v2). Set metadata_options.http_tokens to &quot;required&quot; to improve security when talking to IMDS; default is optional.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; {
+  ami = &quot;ami-123&quot;
+  instance_type = &quot;t3.micro&quot;
+  metadata_options { http_tokens = &quot;required&quot; }
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0028">https://avd.aquasec.com/misconfig/aws-0028</a></p>
+</body>
+</html>

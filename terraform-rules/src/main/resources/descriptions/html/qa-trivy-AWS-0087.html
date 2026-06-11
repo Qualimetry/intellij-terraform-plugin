@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>S3 Access block should block public policy</title></head>
+<body>
+<p>S3 buckets should have a public access block that blocks public bucket policies. Use aws_s3_bucket_public_access_block with block_public_policy set to true.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket_public_access_block&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; block_public_policy = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0087">https://avd.aquasec.com/misconfig/aws-0087</a></p>
+</body>
+</html>
