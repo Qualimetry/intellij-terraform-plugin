@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>S3 bucket naming rules</title></head>
+<body>
+<p>Ensure S3 bucket names match naming rules (length 3–63, regex/prefix if configured). Bucket names must be globally unique.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;ab&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-unique-bucket-name-123&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_s3_bucket_name.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_s3_bucket_name.md</a></p>
+</body>
+</html>

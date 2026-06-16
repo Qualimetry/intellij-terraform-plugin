@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>EC2 instance metadata service configuration</title></head>
+<body>
+<p>EC2 instances should use secure metadata service configuration (e.g. IMDSv2, hop limit) to reduce risk of metadata disclosure.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot;; metadata_options { http_tokens = &quot;required&quot;; http_put_response_hop_limit = 1 } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0132">https://avd.aquasec.com/misconfig/aws-0132</a></p>
+</body>
+</html>

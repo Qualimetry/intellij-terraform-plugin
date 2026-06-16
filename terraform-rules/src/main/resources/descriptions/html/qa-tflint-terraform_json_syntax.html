@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Terraform JSON syntax</title></head>
+<body>
+<p>Enforce the official Terraform JSON syntax with a root object (keys: resource, variable, output, etc.). Array-at-root syntax is not the documented standard.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>[{&quot;resource&quot;: {&quot;aws_instance&quot;: {&quot;a&quot;: {}}}}]</pre>
+<h2>Compliant Solution</h2>
+<pre>{&quot;resource&quot;: {&quot;aws_instance&quot;: {&quot;a&quot;: {}}}}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_json_syntax.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_json_syntax.md</a></p>
+</body>
+</html>
