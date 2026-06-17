@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM policy SID invalid characters</title></head>
+<body>
+<p>Policy statement IDs (Sid) must contain only alphanumeric and underscore characters.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_iam_policy&quot; &quot;a&quot; { policy = jsonencode({ Statement = [{ Sid = &quot;allow-all!&quot; }] }) }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_iam_policy&quot; &quot;a&quot; { policy = jsonencode({ Statement = [{ Sid = &quot;AllowAll&quot; }] }) }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_sid_invalid_characters.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_sid_invalid_characters.md</a></p>
+</body>
+</html>

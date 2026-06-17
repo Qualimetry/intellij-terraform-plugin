@@ -1,0 +1,31 @@
+THIRD-PARTY NOTICES
+
+Qualimetry Terraform Analyzer (SonarQube plugin and VS Code extension)
+Copyright (c) SHAZAM Analytics Ltd / Qualimetry
+
+This software invokes the following third-party command-line tools at
+runtime. They are NOT bundled, embedded, or linked — the user must
+install them separately. No source code from these projects is included
+in this repository.
+
+------------------------------------------------------------------------
+
+tflint
+  https://github.com/terraform-linters/tflint
+  License: Mozilla Public License 2.0 (MPL-2.0)
+  Copyright (c) Kazuma Watanabe and contributors
+
+Trivy
+  https://github.com/aquasecurity/trivy
+  License: Apache License 2.0
+  Copyright (c) Aqua Security Software Ltd.
+
+checkov
+  https://github.com/bridgecrewio/checkov
+  License: Apache License 2.0
+  Copyright (c) Bridgecrew / Palo Alto Networks
+
+------------------------------------------------------------------------
+
+Full license texts are available at the URLs above and in each tool's
+repository.

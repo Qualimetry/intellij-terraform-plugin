@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>S3 buckets should have logging enabled</title></head>
+<body>
+<p>S3 buckets should have server access logging enabled. Add a logging block to the bucket resource pointing to a target bucket for log delivery.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot;; logging { target_bucket = aws_s3_bucket.logs.id; target_prefix = &quot;log/&quot; } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0089">https://avd.aquasec.com/misconfig/aws-0089</a></p>
+</body>
+</html>

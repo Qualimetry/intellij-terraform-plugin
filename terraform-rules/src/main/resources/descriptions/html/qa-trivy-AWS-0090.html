@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Enable S3 bucket versioning</title></head>
+<body>
+<p>S3 data should be versioned. Enable versioning on the bucket (versioning block or aws_s3_bucket_versioning) to preserve, retrieve, and restore object versions and recover from unintended changes.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }
+resource &quot;aws_s3_bucket_versioning&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; versioning_configuration { status = &quot;Enabled&quot; } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0090">https://avd.aquasec.com/misconfig/aws-0090</a></p>
+</body>
+</html>
