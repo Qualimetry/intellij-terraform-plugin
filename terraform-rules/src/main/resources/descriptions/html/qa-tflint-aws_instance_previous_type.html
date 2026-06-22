@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Previous generation EC2 instance type</title></head>
+<body>
+<p>Disallow previous-generation EC2 instance types (e.g. t1, m1); use current generation for support and performance.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t1.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_instance_previous_type.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_instance_previous_type.md</a></p>
+</body>
+</html>

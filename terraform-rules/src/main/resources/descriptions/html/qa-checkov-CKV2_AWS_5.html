@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensure that Security Groups are attached to another resource</title></head>
+<body>
+<p>Ensure that Security Groups are attached to another resource.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_security_group_rule&quot; &quot;a&quot; { type = &quot;ingress&quot;; from_port = 22; to_port = 22; protocol = &quot;tcp&quot;; cidr_blocks = [&quot;0.0.0.0/0&quot;]; security_group_id = &quot;sg-123&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_security_group_rule&quot; &quot;a&quot; { type = &quot;ingress&quot;; from_port = 22; to_port = 22; protocol = &quot;tcp&quot;; cidr_blocks = [&quot;10.0.0.0/8&quot;]; security_group_id = &quot;sg-123&quot;; description = &quot;SSH from VPC&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>
