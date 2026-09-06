@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>AWS provider default tags</title></head>
+<body>
+<p>Require default_tags on the AWS provider so that all supported resources receive consistent tags.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>provider &quot;aws&quot; { region = &quot;us-east-1&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>provider &quot;aws&quot; { region = &quot;us-east-1&quot;; default_tags { tags = { Project = &quot;myproject&quot; } } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_provider_missing_default_tags.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_provider_missing_default_tags.md</a></p>
+</body>
+</html>

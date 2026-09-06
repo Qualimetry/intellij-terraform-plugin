@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Module shallow clone</title></head>
+<body>
+<p>Require pinned Git-hosted modules to use shallow cloning. Add `depth=1` to the source URL to reduce download size and improve CI performance.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>module &quot;m&quot; { source = &quot;git::https://github.com/org/repo.git?ref=v1.0.0&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>module &quot;m&quot; { source = &quot;git::https://github.com/org/repo.git?ref=v1.0.0//subdir&quot; }
+# Add depth=1 to the Git URL when using a ref</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_shallow_clone.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_module_shallow_clone.md</a></p>
+</body>
+</html>
