@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM role deprecated policy attributes</title></head>
+<body>
+<p>Disallow deprecated attributes on IAM role or inline role policies.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_iam_role&quot; &quot;a&quot; { assume_role_policy = &quot;{}&quot;; name = &quot;x&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_iam_role&quot; &quot;a&quot; { assume_role_policy = jsonencode({ Version = &quot;2012-10-17&quot;, Statement = [] }); name = &quot;x&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_role_deprecated_policy_attributes.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_role_deprecated_policy_attributes.md</a></p>
+</body>
+</html>

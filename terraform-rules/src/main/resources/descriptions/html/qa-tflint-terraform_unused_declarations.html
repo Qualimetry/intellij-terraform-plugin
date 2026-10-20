@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Unused declarations</title></head>
+<body>
+<p>Disallow variables, data sources, locals, and provider aliases that are declared but never used. Remove them or add an ignore annotation if intentional.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>variable &quot;unused&quot; {}
+resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_unused_declarations.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_unused_declarations.md</a></p>
+</body>
+</html>

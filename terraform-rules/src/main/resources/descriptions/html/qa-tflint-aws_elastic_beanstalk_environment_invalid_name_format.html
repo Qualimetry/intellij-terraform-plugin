@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Invalid Elastic Beanstalk environment name</title></head>
+<body>
+<p>Elastic Beanstalk environment names must match the required format (length and character rules).</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_elastic_beanstalk_environment&quot; &quot;a&quot; { name = &quot;ab&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_elastic_beanstalk_environment&quot; &quot;a&quot; { name = &quot;my-env-name&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elastic_beanstalk_environment_invalid_name_format.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_elastic_beanstalk_environment_invalid_name_format.md</a></p>
+</body>
+</html>

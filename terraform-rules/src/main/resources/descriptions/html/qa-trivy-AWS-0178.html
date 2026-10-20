@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>VPC flow logging</title></head>
+<body>
+<p>VPCs should have flow logging enabled for network traffic monitoring and compliance. Create aws_flow_log resources for the VPC.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_vpc&quot; &quot;a&quot; { cidr_block = &quot;10.0.0.0/16&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_vpc&quot; &quot;a&quot; { cidr_block = &quot;10.0.0.0/16&quot; }
+resource &quot;aws_flow_log&quot; &quot;a&quot; { vpc_id = aws_vpc.a.id; traffic_type = &quot;ALL&quot;; log_destination_type = &quot;cloud-watch-logs&quot;; log_destination = aws_cloudwatch_log_group.a.arn }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0178">https://avd.aquasec.com/misconfig/aws-0178</a></p>
+</body>
+</html>

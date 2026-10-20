@@ -1,0 +1,31 @@
+{
+  "SchemaVersion": 2,
+  "Results": [
+    {
+      "Target": "main.tf",
+      "Class": "config",
+      "Type": "terraform",
+      "Misconfigurations": [
+        {
+          "ID": "AWS-0086",
+          "Title": "S3 Access block should block public ACL",
+          "Message": "Public access block does not block public ACLs",
+          "CauseMetadata": {
+            "Resource": "aws_s3_bucket_public_access_block.example",
+            "Provider": "AWS",
+            "Service": "s3",
+            "StartLine": 12
+          }
+        },
+        {
+          "ID": "AWS-0088",
+          "Title": "S3 buckets should have encryption enabled",
+          "Message": "Bucket does not have encryption enabled",
+          "CauseMetadata": {
+            "StartLine": 5
+          }
+        }
+      ]
+    }
+  ]
+}
