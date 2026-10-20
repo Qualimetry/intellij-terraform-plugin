@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Deprecated lookup usage</title></head>
+<body>
+<p>Disallow `lookup(map, key)` without a default. Use native index syntax `map[key]` instead; `lookup` with two arguments has been deprecated since Terraform v0.7.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>locals { x = lookup(var.map, &quot;key&quot;) }</pre>
+<h2>Compliant Solution</h2>
+<pre>locals { x = var.map[&quot;key&quot;] }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_deprecated_lookup.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_deprecated_lookup.md</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Lambda deprecated runtime</title></head>
+<body>
+<p>The runtime attribute of aws_lambda_function must not be a deprecated runtime (e.g. nodejs10.x); use a supported runtime.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_lambda_function&quot; &quot;a&quot; { function_name = &quot;x&quot;; handler = &quot;index.handler&quot;; runtime = &quot;nodejs10.x&quot;; role = &quot;arn:aws:iam::123:role/x&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_lambda_function&quot; &quot;a&quot; { function_name = &quot;x&quot;; handler = &quot;index.handler&quot;; runtime = &quot;nodejs20.x&quot;; role = &quot;arn:aws:iam::123:role/x&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_lambda_function_deprecated_runtime.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_lambda_function_deprecated_runtime.md</a></p>
+</body>
+</html>

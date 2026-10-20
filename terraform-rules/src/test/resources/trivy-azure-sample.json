@@ -1,0 +1,28 @@
+{
+  "SchemaVersion": 2,
+  "Results": [
+    {
+      "Target": "roles.tf",
+      "Class": "config",
+      "Type": "terraform",
+      "Misconfigurations": [
+        {
+          "Type": "Terraform Security Check",
+          "ID": "AZU-0052",
+          "AVDID": "AVD-AZU-0052",
+          "Title": "Role Definition Allows Custom Role Creation",
+          "Message": "Role definition allows custom role creation via 'Microsoft.Authorization/roleDefinitions/write' permission.",
+          "Severity": "MEDIUM",
+          "Status": "FAIL",
+          "CauseMetadata": {
+            "Resource": "azurerm_role_definition.example",
+            "Provider": "Azure",
+            "Service": "authorization",
+            "StartLine": 4,
+            "EndLine": 12
+          }
+        }
+      ]
+    }
+  ]
+}

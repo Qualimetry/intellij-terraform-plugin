@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensure CodeBuild project environments have a logging configuration</title></head>
+<body>
+<p>Ensure CodeBuild project environments have a logging configuration.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket&quot; &quot;a&quot; { bucket = &quot;my-bucket&quot;; logging { target_bucket = aws_s3_bucket.logs.id; target_prefix = &quot;log/&quot; } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Enable at-rest encryption for EC2</title></head>
+<body>
+<p>Instance block devices should be encrypted. Set root_block_device and ebs_block_device encrypted = true on aws_instance so sensitive data is held securely at rest.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_instance&quot; &quot;a&quot; { ami = &quot;ami-123&quot;; instance_type = &quot;t3.micro&quot;; root_block_device { encrypted = true }; ebs_block_device { device_name = &quot;/dev/sdb&quot;; encrypted = true } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0131">https://avd.aquasec.com/misconfig/aws-0131</a></p>
+</body>
+</html>

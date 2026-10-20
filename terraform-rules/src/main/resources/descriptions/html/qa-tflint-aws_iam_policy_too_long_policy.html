@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM policy too long</title></head>
+<body>
+<p>Inline IAM policy document exceeds size limits; consider using managed policies or splitting.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_iam_role_policy&quot; &quot;a&quot; { role = &quot;x&quot;; policy = jsonencode({ Version = &quot;2012-10-17&quot;, Statement = [for i in range(50) : { Effect = &quot;Allow&quot;, Action = &quot;*&quot;, Resource = &quot;*&quot; }] }) }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_iam_policy&quot; &quot;a&quot; { policy = jsonencode({ Version = &quot;2012-10-17&quot;, Statement = [{ Effect = &quot;Allow&quot;, Action = &quot;s3:GetObject&quot;, Resource = &quot;*&quot; }] }) }
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;a&quot; { role = &quot;x&quot;; policy_arn = aws_iam_policy.a.arn }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_too_long_policy.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_too_long_policy.md</a></p>
+</body>
+</html>

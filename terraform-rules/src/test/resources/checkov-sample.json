@@ -1,0 +1,18 @@
+{
+  "results": {
+    "failed_checks": [
+      {
+        "check_id": "CKV_AWS_20",
+        "check_name": "S3 bucket has server-side encryption disabled",
+        "file_path": "/project/s3.tf",
+        "file_line_range": [5, 10]
+      },
+      {
+        "check_id": "CKV_AWS_57",
+        "message": "S3 bucket has public access block disabled",
+        "file_path": "/project/s3.tf",
+        "file_line_range": [5]
+      }
+    ]
+  }
+}

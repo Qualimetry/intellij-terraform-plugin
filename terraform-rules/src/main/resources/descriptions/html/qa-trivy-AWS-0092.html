@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>No public access with ACL</title></head>
+<body>
+<p>S3 buckets should not be publicly accessible through ACL. Use private ACL (acl = &quot;private&quot; or aws_s3_bucket_acl with acl = &quot;private&quot;); avoid canned public ACLs.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_s3_bucket_acl&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; acl = &quot;public-read&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_s3_bucket_acl&quot; &quot;a&quot; { bucket = aws_s3_bucket.a.id; acl = &quot;private&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://avd.aquasec.com/misconfig/aws-0092">https://avd.aquasec.com/misconfig/aws-0092</a></p>
+</body>
+</html>

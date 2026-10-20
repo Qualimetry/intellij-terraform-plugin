@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Ensures Spring Cloud API Portal is enabled on for HTTPS</title></head>
+<body>
+<p>Ensures Spring Cloud API Portal is enabled on for HTTPS.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;azurerm_storage_account&quot; &quot;a&quot; { name = &quot;sa&quot;; resource_group_name = &quot;rg&quot;; location = &quot;East US&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;azurerm_storage_account&quot; &quot;a&quot; { name = &quot;sa&quot;; resource_group_name = &quot;rg&quot;; location = &quot;East US&quot;; enable_https_traffic_only = true }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://www.checkov.io/5.Policy%20Index/terraform.html">https://www.checkov.io/5.Policy%20Index/terraform.html</a></p>
+</body>
+</html>

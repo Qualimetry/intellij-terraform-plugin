@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>IAM policy document GovCloud ARNs</title></head>
+<body>
+<p>IAM policy documents should use GovCloud-friendly ARN formats when targeting AWS GovCloud.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>data &quot;aws_iam_policy_document&quot; &quot;a&quot; { statement { actions = [&quot;s3:*&quot;]; resources = [&quot;arn:aws:s3:::*&quot;] } }</pre>
+<h2>Compliant Solution</h2>
+<pre>data &quot;aws_iam_policy_document&quot; &quot;a&quot; { statement { actions = [&quot;s3:*&quot;]; resources = [&quot;arn:aws-us-gov:s3:::*&quot;] } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_document_gov_friendly_arns.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_iam_policy_document_gov_friendly_arns.md</a></p>
+</body>
+</html>

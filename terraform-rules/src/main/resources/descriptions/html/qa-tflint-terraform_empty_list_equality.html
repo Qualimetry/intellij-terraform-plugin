@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Empty list equality check</title></head>
+<body>
+<p>Disallow comparisons with `[]` when checking if a collection is empty. Use `length(var.list) == 0` instead; `== []` has type semantics that often make it always false.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>locals { empty = var.list == [] }</pre>
+<h2>Compliant Solution</h2>
+<pre>locals { empty = length(var.list) == 0 }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_empty_list_equality.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_empty_list_equality.md</a></p>
+</body>
+</html>

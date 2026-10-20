@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Required providers source and version</title></head>
+<body>
+<p>Require that all providers specify `source` and version constraint in `required_providers`. Avoid legacy provider block version and use the terraform block for constraints.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>terraform {}
+provider &quot;aws&quot; { version = &quot;~&gt; 5.0&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>terraform {
+  required_providers {
+    aws = { source = &quot;hashicorp/aws&quot;, version = &quot;~&gt; 5.0&quot; }
+  }
+}</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_required_providers.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_required_providers.md</a></p>
+</body>
+</html>

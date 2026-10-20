@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Route specified multiple targets</title></head>
+<body>
+<p>aws_route should not specify more than one target type; only one of gateway_id, nat_gateway_id, etc.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>resource &quot;aws_route&quot; &quot;a&quot; { route_table_id = &quot;rtb-123&quot;; destination_cidr_block = &quot;0.0.0.0/0&quot;; gateway_id = &quot;igw-1&quot;; nat_gateway_id = &quot;nat-1&quot; }</pre>
+<h2>Compliant Solution</h2>
+<pre>resource &quot;aws_route&quot; &quot;a&quot; { route_table_id = &quot;rtb-123&quot;; destination_cidr_block = &quot;0.0.0.0/0&quot;; gateway_id = &quot;igw-123&quot; }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_route_specified_multiple_targets.md">https://github.com/terraform-linters/tflint-ruleset-aws/blob/master/docs/rules/aws_route_specified_multiple_targets.md</a></p>
+</body>
+</html>

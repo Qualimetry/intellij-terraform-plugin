@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Unused required providers</title></head>
+<body>
+<p>Check that all `required_providers` are used in the module. Remove providers that are no longer used to avoid unnecessary downloads.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>terraform { required_providers { aws = {}; null = {} } }
+# null never used</pre>
+<h2>Compliant Solution</h2>
+<pre>terraform { required_providers { aws = { source = &quot;hashicorp/aws&quot; } } }</pre>
+<h2>See Also</h2>
+<p>More information: <a href="https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_unused_required_providers.md">https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_unused_required_providers.md</a></p>
+</body>
+</html>
